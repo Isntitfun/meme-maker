@@ -1,0 +1,16 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: tomato;
+}
+
+canvas {
+  width: 600px;
+  height: 600px;
+  background-color: white;
+  border: 10px solid black;
+  border-radius: 30px;
+  padding: 10px;
+}
