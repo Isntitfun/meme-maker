@@ -4,10 +4,18 @@ const canvas = document.querySelector(".canvas");
 const ctx1 = canvas1.getContext("2d");
 const ctx2 = canvas2.getContext("2d");
 const ctx = canvas.getContext("2d");
+
 const lineWidth = document.querySelector(".line-width");
 const color = document.querySelector(".color");
 const colorPick = Array.from(document.querySelectorAll(".color-pick"));
 const modeBtn = document.querySelector(".mode-btn");
+const resetBtn = document.querySelector(".reset-btn");
+const eraserBtn = document.querySelector(".eraser-btn");
+const file = document.querySelector(".file");
+const textInput = document.querySelector(".text");
+
+const CANVAS_HEIGHT = 600;
+const CANVAS_WIDTH = 600;
 
 canvas1.width = 800;
 canvas1.height = 800;
@@ -82,6 +90,7 @@ ctx2.fill();
 canvas.width = 600;
 canvas.height = 600;
 ctx.linewidth = lineWidth.value;
+ctx.linecap = "round";
 
 const colors = [
   "#E6B0AA",
@@ -155,6 +164,61 @@ function handleCanvasClick() {
   }
 }
 
+function handleResetBtnClick() {
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, 600, 600);
+}
+
+function handleEraserBtnClick() {
+  isFilling = false;
+  modeBtn.innerText = "Draw Mode";
+  ctx.strokeStyle = "white";
+}
+
+function onFileChange(event) {
+  const file = event.target.files[0];
+  const url = URL.createObjectURL(file);
+  const image = document.createElement("img");
+  image.src = url;
+  image.onload = function () {
+    ctx.drawImage(image, 0, 0, CANVAS_HEIGHT, CANVAS_WIDTH);
+    fileInput.value = null;
+  };
+}
+
+// function onFileChange(event) {
+//   const file = event.target.files[0];
+//   const url = URL.createObjectURL(file);
+//   const image = new Image();
+//   image.src = url;
+//   image.onload = function () {
+//     ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+//     fileInput.value = null;
+//   };
+// }
+
+// function onFileChange(event) {
+//   const file = event.target.files[0];
+//   const url = URL.createObjectURL(file);
+//   const image = new Image();
+//   image.src = url;
+//   ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+//   file.value = null;
+// }
+
+function handleCanvasDbclick(event) {
+  const text = textInput.value;
+  const x = event.offsetX;
+  const y = event.offsetY;
+  if (text !== null) {
+    ctx.save();
+    ctx.linewidth = 1;
+    ctx.font = "30px arial";
+    ctx.fillText(text, x, y);
+    ctx.restore();
+  }
+}
+
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", stopPainting);
@@ -167,3 +231,7 @@ colorPick.forEach((item) =>
 );
 modeBtn.addEventListener("click", handleModeBtnClick);
 canvas.addEventListener("click", handleCanvasClick);
+resetBtn.addEventListener("click", handleResetBtnClick);
+eraserBtn.addEventListener("click", handleEraserBtnClick);
+file.addEventListener("change", onFileChange);
+canvas.addEventListener("dblclick", handleCanvasDbclick);
