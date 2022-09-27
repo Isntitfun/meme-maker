@@ -11,7 +11,7 @@ const colorPick = Array.from(document.querySelectorAll(".color-pick"));
 const modeBtn = document.querySelector(".mode-btn");
 const resetBtn = document.querySelector(".reset-btn");
 const eraserBtn = document.querySelector(".eraser-btn");
-const file = document.querySelector(".file");
+const fileInput = document.querySelector(".file");
 const textInput = document.querySelector(".text");
 const downloadBtn = document.querySelector(".download");
 
@@ -242,6 +242,6 @@ modeBtn.addEventListener("click", handleModeBtnClick);
 canvas.addEventListener("click", handleCanvasClick);
 resetBtn.addEventListener("click", handleResetBtnClick);
 eraserBtn.addEventListener("click", handleEraserBtnClick);
-file.addEventListener("change", onFileChange);
+fileInput.addEventListener("change", onFileChange);
 canvas.addEventListener("dblclick", handleCanvasDbclick);
 downloadBtn.addEventListener("click", handleDownloadBtnClick);
