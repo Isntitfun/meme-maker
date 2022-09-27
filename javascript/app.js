@@ -13,6 +13,7 @@ const resetBtn = document.querySelector(".reset-btn");
 const eraserBtn = document.querySelector(".eraser-btn");
 const file = document.querySelector(".file");
 const textInput = document.querySelector(".text");
+const downloadBtn = document.querySelector(".download");
 
 const CANVAS_HEIGHT = 600;
 const CANVAS_WIDTH = 600;
@@ -219,6 +220,14 @@ function handleCanvasDbclick(event) {
   }
 }
 
+function handleDownloadBtnClick(event) {
+  const url = canvas.toDataURL();
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "New Drawing";
+  link.click();
+}
+
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", stopPainting);
@@ -235,3 +244,4 @@ resetBtn.addEventListener("click", handleResetBtnClick);
 eraserBtn.addEventListener("click", handleEraserBtnClick);
 file.addEventListener("change", onFileChange);
 canvas.addEventListener("dblclick", handleCanvasDbclick);
+downloadBtn.addEventListener("click", handleDownloadBtnClick);
