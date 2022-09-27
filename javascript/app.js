@@ -6,6 +6,7 @@ const ctx2 = canvas2.getContext("2d");
 const ctx = canvas.getContext("2d");
 const lineWidth = document.querySelector(".line-width");
 const color = document.querySelector(".color")
+const colorPick = Array.from(document.querySelectorAll(".color-pick"))
 
 canvas1.width = 800;
 canvas1.height = 800;
@@ -130,6 +131,13 @@ ctx.strokeStyle = `${colorValue}`
 ctx.fillStyle = `${colorValue}`
 }
 
+function handleColorPickClick(event){
+const pickedColor = event.target.dataset.color
+ctx.strokeStyle = `${pickedColor}`
+ctx.fillStyle = `${pickedColor}`
+color.value = pickedColor
+}
+
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", stopPainting);
@@ -137,4 +145,5 @@ canvas.addEventListener("mouseleave", stopPainting);
 
 lineWidth.addEventListener("change", lineWidthChange);
 color.addEventListener("change", handleColorChange);
+colorPick.forEach(item => item.addEventListener("click", handleColorPickClick))
 

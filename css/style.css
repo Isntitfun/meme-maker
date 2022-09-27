@@ -6,6 +6,12 @@ body {
   align-items: center;
   background-color: tomato;
 }
+.drawing-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: flex-start;
+}
 .canvas {
   width: 600px;
   height: 600px;
@@ -31,7 +37,29 @@ body {
 }
 
 .line-width {
-  position: relative;
-  bottom: 200px;
+margin-top: 40px;
   width: 500px;
+  margin-top: 20px;
+}
+
+.color {
+  outline: none;
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+  margin-top: 40px;
+}
+
+.pallete {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.color-pick {
+  width: 40px;
+  height: 40px;
+  margin: 10px 10px;
+  border-radius: 10px;
 }
