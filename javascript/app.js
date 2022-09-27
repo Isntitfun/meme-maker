@@ -5,8 +5,9 @@ const ctx1 = canvas1.getContext("2d");
 const ctx2 = canvas2.getContext("2d");
 const ctx = canvas.getContext("2d");
 const lineWidth = document.querySelector(".line-width");
-const color = document.querySelector(".color")
-const colorPick = Array.from(document.querySelectorAll(".color-pick"))
+const color = document.querySelector(".color");
+const colorPick = Array.from(document.querySelectorAll(".color-pick"));
+const modeBtn = document.querySelector(".mode-btn");
 
 canvas1.width = 800;
 canvas1.height = 800;
@@ -100,6 +101,7 @@ const colors = [
 ];
 
 let isPainting = false;
+let isFilling = false;
 
 function handleMouseMove(event) {
   const x = event.offsetX;
@@ -126,16 +128,31 @@ function lineWidthChange() {
 }
 
 function handleColorChange(event) {
-const colorValue = color.value
-ctx.strokeStyle = `${colorValue}`
-ctx.fillStyle = `${colorValue}`
+  const colorValue = color.value;
+  ctx.strokeStyle = `${colorValue}`;
+  ctx.fillStyle = `${colorValue}`;
 }
 
-function handleColorPickClick(event){
-const pickedColor = event.target.dataset.color
-ctx.strokeStyle = `${pickedColor}`
-ctx.fillStyle = `${pickedColor}`
-color.value = pickedColor
+function handleColorPickClick(event) {
+  const pickedColor = event.target.dataset.color;
+  ctx.strokeStyle = `${pickedColor}`;
+  ctx.fillStyle = `${pickedColor}`;
+  color.value = pickedColor;
+}
+function handleModeBtnClick(event) {
+  if (isFilling) {
+    isFilling = false;
+    event.target.innerText = "Draw Mode";
+  } else {
+    isFilling = true;
+    event.target.innerText = "Fill Mode";
+  }
+}
+
+function handleCanvasClick() {
+  if (isFilling) {
+    ctx.fillRect(0, 0, 600, 600);
+  }
 }
 
 canvas.addEventListener("mousemove", handleMouseMove);
@@ -145,5 +162,8 @@ canvas.addEventListener("mouseleave", stopPainting);
 
 lineWidth.addEventListener("change", lineWidthChange);
 color.addEventListener("change", handleColorChange);
-colorPick.forEach(item => item.addEventListener("click", handleColorPickClick))
-
+colorPick.forEach((item) =>
+  item.addEventListener("click", handleColorPickClick)
+);
+modeBtn.addEventListener("click", handleModeBtnClick);
+canvas.addEventListener("click", handleCanvasClick);

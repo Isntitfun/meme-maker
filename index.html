@@ -10,6 +10,7 @@
   <body>
     <div class="drawing-board">
     <canvas class="canvas"></canvas>
+    <div class="mode">
     <input
       class="line-width"
       type="range"
@@ -18,9 +19,11 @@
       max="10"
       step="0.1"
     />
-    <input type="color" class="color">
+    <button class="mode-btn">Fill</button>
+  </div>
 
     <div class="pallete">
+      <input type="color" class="color">
       <div class="color-pick" style="background-color: #fc5c65;" data-color="#fc5c65"=""></div>
       <div class="color-pick" style="background-color: #fd9644;" data-color="#fd9644"=""></div>
       <div class="color-pick" style="background-color: #fed330;" data-color="#fed330"=""></div>
