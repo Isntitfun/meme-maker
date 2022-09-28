@@ -1,8 +1,4 @@
-const canvas1 = document.querySelector(".canvas1");
-const canvas2 = document.querySelector(".canvas2");
 const canvas = document.querySelector(".canvas");
-const ctx1 = canvas1.getContext("2d");
-const ctx2 = canvas2.getContext("2d");
 const ctx = canvas.getContext("2d");
 
 const lineWidth = document.querySelector(".line-width");

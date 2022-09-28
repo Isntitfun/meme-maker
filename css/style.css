@@ -2,15 +2,18 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: rgb(228, 228, 228);
 }
+
 .drawing-board {
+  height: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-items: flex-start;
 }
+
 .canvas {
   width: 600px;
   height: 600px;
@@ -30,24 +33,76 @@ body {
 }
 
 .color {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   outline: none;
-  width: 40px;
-  height: 40px;
-  margin: 10px 10px;
+  appearance: none;
+  width: 45px;
+  height: 50px;
+  z-index: 1;
+  border: none;
+  background-color: transparent;
+}
+.color::-webkit-color-swatch {
+  border: none;
+  border-radius: 25px;
+  padding: none;
 }
 
 .pallete {
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 100px;
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+
+.pallete:hover {
+  width: 180px;
+  height: 180px;
 }
 
 .color-pick {
-  width: 40px;
-  height: 40px;
-  margin: 10px 10px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  position: absolute;
+  transition: all 0.3s ease-out;
+}
+
+.pallete:hover .c1 {
+  top: 20px;
+}
+
+.pallete:hover .c2 {
+  top: 35px;
+  right: 35px;
+}
+
+.pallete:hover .c3 {
+  right: 20px;
+}
+.pallete:hover .c4 {
+  bottom: 35px;
+  right: 35px;
+}
+.pallete:hover .c5 {
+  bottom: 20px;
+}
+.pallete:hover .c6 {
+  bottom: 35px;
+  left: 35px;
+}
+.pallete:hover .c7 {
+  left: 20px;
+}
+.pallete:hover .c8 {
+  left: 35px;
+  top: 35px;
 }
