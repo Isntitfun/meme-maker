@@ -1,47 +1,28 @@
 body {
-  height: 300vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
-  background-color: tomato;
+  background-color: rgb(228, 228, 228);
 }
 .drawing-board {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-items: flex-start;
 }
 .canvas {
   width: 600px;
   height: 600px;
   background-color: white;
-  border: 10px solid black;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
-.canvas1 {
-  width: 600px;
-  height: 600px;
-  background-color: white;
-  border: 10px solid black;
-  border-radius: 30px;
-}
-
-.canvas2 {
-  width: 600px;
-  height: 600px;
-  background-color: white;
-  border: 10px solid black;
-  border-radius: 30px;
-}
-
-.mode{
-  display:flex;
-  align-items: center;
+.mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-around;
-  margin-top: 40px;
-  width: 100%;
 }
 
 .line-width {
@@ -53,15 +34,15 @@ body {
   width: 40px;
   height: 40px;
   margin: 10px 10px;
-
 }
 
 .pallete {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin-top: 20px;
 }
 
 .color-pick {
