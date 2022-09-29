@@ -76,12 +76,19 @@ function handleColorPickClick(event) {
   color.value = pickedColor;
 }
 function handleModeBtnClick(event) {
+  const drawMode = event.target.querySelector("i:first-child");
+  const fillMode = event.target.querySelector("i:last-child");
+  console.log(event.target);
+  console.log(drawMode);
+  console.log(fillMode);
   if (isFilling) {
     isFilling = false;
-    event.target.innerText = "Draw Mode";
+    fillMode.style.opacity = "0";
+    drawMode.style.opacity = "1";
   } else {
     isFilling = true;
-    event.target.innerText = "Fill Mode";
+    drawMode.style.opacity = "0";
+    fillMode.style.opacity = "1";
   }
 }
 
