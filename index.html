@@ -12,36 +12,8 @@
       <canvas class="canvas"></canvas>
       <div class="mode">
         <button class="mode-btn" id="mode-btn">
-          <i class="fa-solid fa-pen fa-2x"></i
-          ><i class="fa-solid fa-fill-drip fa-2x"></i>
-          <label for="mode-btn"></label>
+          <i class="fa-solid fa-pen"></i><i class="fa-solid fa-fill-drip"></i>
         </button>
-
-        <button class="reset-btn">
-          <i class="fa-solid fa-trash fa-2x"></i>
-        </button>
-        <button class="eraser-btn">
-          <i class="fa-solid fa-eraser fa-2x"></i>
-        </button>
-        <button class="download">
-          <i class="fa-solid fa-download fa-2x"></i>
-        </button>
-
-        <input class="file" type="file" accept="image/*" />
-        <input
-          class="text"
-          type="text"
-          size="25"
-          placeholder="type text and dblclick the canvas.."
-        />
-        <input
-          class="line-width"
-          type="range"
-          value="5"
-          min="0.1"
-          max="10"
-          step="0.1"
-        />
         <div class="pallete">
           <input type="color" class="color" />
           <div class="color-set">
@@ -95,6 +67,41 @@
             ></div>
           </div>
         </div>
+        <label for="line-width">
+          <i class="fa-solid fa-arrows-left-right"></i>
+          <input
+            id="line-width"
+            class="line-width"
+            type="range"
+            value="5"
+            min="0.1"
+            max="10"
+            step="0.1"
+          />
+        </label>
+        <button class="eraser-btn">
+          <i class="fa-solid fa-eraser"></i>
+        </button>
+        <button class="reset-btn">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+        <label for="text">
+          <i class="fa-solid fa-font"></i>
+          <input
+            id="text"
+            class="text"
+            type="text"
+            size="25"
+            placeholder="type text and dblclick the canvas.."
+          />
+        </label>
+        <label for="file">
+          <i class="fa-solid fa-folder"></i>
+          <input id="file" class="file" type="file" accept="image/*" />
+        </label>
+        <button class="download">
+          <i class="fa-solid fa-download"></i>
+        </button>
       </div>
     </div>
   </body>

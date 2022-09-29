@@ -10,12 +10,14 @@ const eraserBtn = document.querySelector(".eraser-btn");
 const fileInput = document.querySelector(".file");
 const textInput = document.querySelector(".text");
 const downloadBtn = document.querySelector(".download");
+const drawMode = modeBtn.querySelector("i:first-child");
+const fillMode = modeBtn.querySelector("i:last-child");
 
-const CANVAS_HEIGHT = 600;
-const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 800;
+const CANVAS_WIDTH = 800;
 
-canvas.width = 600;
-canvas.height = 600;
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
 ctx.linewidth = lineWidth.value;
 ctx.linecap = "round";
 
@@ -76,8 +78,6 @@ function handleColorPickClick(event) {
   color.value = pickedColor;
 }
 function handleModeBtnClick(event) {
-  const drawMode = event.target.querySelector("i:first-child");
-  const fillMode = event.target.querySelector("i:last-child");
   console.log(event.target);
   console.log(drawMode);
   console.log(fillMode);
@@ -94,18 +94,19 @@ function handleModeBtnClick(event) {
 
 function handleCanvasClick() {
   if (isFilling) {
-    ctx.fillRect(0, 0, 600, 600);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 }
 
 function handleResetBtnClick() {
   ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, 600, 600);
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
 
 function handleEraserBtnClick() {
   isFilling = false;
-  modeBtn.innerText = "Draw Mode";
+  fillMode.style.opacity = "0";
+  drawMode.style.opacity = "1";
   ctx.strokeStyle = "white";
 }
 
